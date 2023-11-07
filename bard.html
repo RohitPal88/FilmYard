@@ -1,0 +1,133 @@
+<style>
+    .slider {
+  width: 100%;
+  height: 300px;
+  position: relative;
+  overflow: hidden;
+}
+
+.slider-heading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background-color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  color: white;
+}
+
+.slider-slides {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slider-slide {
+  width: 33.33%;
+  float: left;
+  text-align: center;
+}
+
+.slider-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slider-slide h2 {
+  font-size: 24px;
+  margin-top: 20px;
+}
+
+.slider-slide button {
+  margin-top: 20px;
+}
+
+.slider-controls {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background-color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
+.slider-prev,
+.slider-next {
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+}
+
+</style>
+<div class="slider">
+    <div class="slider-heading">
+        <h1>Cool Animation Slider</h1>
+    </div>
+    <div class="slider-slides">
+        <div class="slider-slide">
+            <img src="assets/images/image1.jpg" alt="Image 1">
+            <h2>Button 1</h2>
+            <button>Click Me!</button>
+        </div>
+        <div class="slider-slide">
+            <img src="assets/images/image2.jpg" alt="Image 2">
+            <h2>Button 2</h2>
+            <button>Click Me!</button>
+        </div>
+        <div class="slider-slide">
+            <img src="assets/images/image3.jpg" alt="Image 3">
+            <h2>Button 3</h2>
+            <button>Click Me!</button>
+        </div>
+    </div>
+    <div class="slider-controls">
+        <button class="slider-prev">Prev</button>
+        <button class="slider-next">Next</button>
+    </div>
+</div>
+
+<script>
+    const slider = document.querySelector('.slider');
+const slides = document.querySelectorAll('.slider-slide');
+const prevBtn = document.querySelector('.slider-prev');
+const nextBtn = document.querySelector('.slider-next');
+
+let currentSlideIndex = 0;
+
+function showSlide(slideIndex) {
+  slides.forEach((slide, index) => {
+    slide.classList.remove('active');
+    if (index === slideIndex) {
+      slide.classList.add('active');
+    }
+  });
+}
+
+function prevSlide() {
+  currentSlideIndex--;
+  if (currentSlideIndex < 0) {
+    currentSlideIndex = slides.length - 1;
+  }
+  showSlide(currentSlideIndex);
+}
+
+function nextSlide() {
+  currentSlideIndex++;
+  if (currentSlideIndex >= slides.length) {
+    currentSlideIndex = 0;
+  }
+  showSlide(currentSlideIndex);
+}
+
+prevBtn.addEventListener('click', prevSlide);
+nextBtn.addEventListener('click', nextSlide);
+
+showSlide(currentSlideIndex);
+
+</script>
