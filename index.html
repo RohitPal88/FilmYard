@@ -1,28 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Background Slider with Fixed Content</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .swiper-container {
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-slide {
+            background-size: cover;
+            background-position: center;
+            filter: brightness(60%) blur(2px);
+        }
+
+        .content {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 2;
+            color: white;
+            animation: fadeInUp 1s ease;
+        }
+        .content h1 {
+            font-size: 4em; /* Increase font size */
+            margin-bottom: 20px; /* Add more space below the heading */
+            font-weight: bold;
+            background: linear-gradient(to right, #fffefc, #555352d0);
+            -webkit-background-clip: text;
+            color: transparent;
+            display: inline-block;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add a text shadow */
+        }
+
+        .content p {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            color: #ebe9e4;
+            background-color: rgba(100, 95, 93, 0.363);
+            border: 1px solid rgba(0, 255, 255, 0.199);
+            /* Set slogan color */
+            font-style: italic;
+            /* Add italic style to the slogan */
+        }
+
+        .btn {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 1em;
+            transition: transform 0.2s ease;
+            color: #bbb9b6;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <div class="slider">
-        <div class="slide" style="background-image:url('assets/images/image1.jpg')"></div>
-        <div class="slide" style="background-image:url('assets/images/image2.jpg')"></div>
-        <div class="slide" style="background-image:url('assets/images/image3.jpg')"></div>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" style="background-image:url('assets/images/image1.jpg')"></div>
+            <div class="swiper-slide" style="background-image:url('assets/images/image2.jpg')"></div>
+            <div class="swiper-slide" style="background-image:url('assets/images/image3.jpg')"></div>
+        </div>
     </div>
 
     <div class="content">
-        <h1>Fixed Content</h1>
-        <p>This content will stay fixed while the background images slide behind it.</p>
+        <h1>FimYard</h1>
+        <p>Where Creativity Meets Opportunity</p> <!-- Adjusted slogan -->
+        <a href="#" class="btn">Talent</a>
+        <a href="#" class="btn">Location</a>
+        <a href="#" class="btn">Contact US</a>
+        <a href="#" class="btn">Search</a>
+
+        <p>&copy; 2023 FilmYard. All Rights Reserved.</p>
     </div>
 
-    <div class="copyright">
-        <p>&copy; 2023 Your Company. All Rights Reserved.</p>
-    </div>
-
-    <script src="assets/js/script.js">
+    <script src="assets/js/swiper-bundle.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script>
+        var mySwiper = new Swiper('.swiper-container', {
+            loop: true,
+            autoplay: {
+                delay: 0, // Set a longer delay (in milliseconds) between each slide
+            },
+            speed: 6000, // Set the transition speed (in milliseconds)
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            noSwiping: true, // Disable manual swiping
+            noSwipingClass: 'swiper-no-swiping', // Add a class to disable manual swiping
+        });
     </script>
 </body>
+
 </html>
